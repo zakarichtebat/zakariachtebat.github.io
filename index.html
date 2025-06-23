@@ -71,7 +71,7 @@
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             animation: fadeInUp 2s ease-out;
         }
 
@@ -114,6 +114,16 @@
             animation: pulse 3s infinite;
         }
 
+        .hero-description {
+            font-size: 1.1rem;
+            margin: 30px 0;
+            opacity: 0.8;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .cta-button {
             display: inline-block;
             padding: 15px 30px;
@@ -148,13 +158,21 @@
 
         .section h2 {
             font-size: 3rem;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             text-align: center;
             background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: colorShift 3s ease infinite;
+        }
+
+        .section-description {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+            opacity: 0.8;
+            line-height: 1.6;
         }
 
         .skills-grid {
@@ -178,6 +196,24 @@
             transform: rotateY(5deg) rotateX(5deg) translateZ(20px);
             background: rgba(255,255,255,0.2);
             box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .skill-card p {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .skill-detail {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
 
         .projects-grid {
@@ -213,6 +249,111 @@
         .project-card:hover {
             transform: translateY(-10px) scale(1.02);
             box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+
+        .project-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .project-tech {
+            color: #00ffff;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .project-description {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .project-features {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .project-features h4 {
+            margin-bottom: 10px;
+            color: #4ecdc4;
+        }
+
+        .project-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .project-features li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .project-features li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #00ffff;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin: 50px 0;
+        }
+
+        .about-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 25px;
+            padding: 40px;
+            transition: all 0.4s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .education-timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 20px 0 20px 40px;
+            border-left: 2px solid #00ffff;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 25px;
+            width: 12px;
+            height: 12px;
+            background: #00ffff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00ffff;
+        }
+
+        .timeline-date {
+            color: #4ecdc4;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-description {
+            opacity: 0.8;
+            line-height: 1.5;
         }
 
         .floating-particles {
@@ -315,6 +456,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border: 2px solid rgba(255,255,255,0.3);
+            position: relative;
         }
 
         .nav-dot:hover,
@@ -322,6 +464,27 @@
             background: #00ffff;
             transform: scale(1.3);
             box-shadow: 0 0 20px #00ffff;
+        }
+
+        .nav-dot::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .nav-dot:hover::after {
+            opacity: 1;
         }
 
         /* Responsive */
@@ -335,8 +498,13 @@
             }
             
             .skills-grid,
-            .projects-grid {
+            .projects-grid,
+            .about-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .floating-nav {
+                right: 15px;
             }
         }
     </style>
@@ -353,11 +521,11 @@
     
     <!-- Navigation flottante -->
     <div class="floating-nav">
-        <div class="nav-dot active" data-section="hero"></div>
-        <div class="nav-dot" data-section="about"></div>
-        <div class="nav-dot" data-section="skills"></div>
-        <div class="nav-dot" data-section="projects"></div>
-        <div class="nav-dot" data-section="contact"></div>
+        <div class="nav-dot active" data-section="hero" data-tooltip="Accueil"></div>
+        <div class="nav-dot" data-section="about" data-tooltip="À Propos"></div>
+        <div class="nav-dot" data-section="skills" data-tooltip="Compétences"></div>
+        <div class="nav-dot" data-section="projects" data-tooltip="Projets"></div>
+        <div class="nav-dot" data-section="contact" data-tooltip="Contact"></div>
     </div>
     
     <!-- Interface utilisateur -->
@@ -367,6 +535,9 @@
             <div class="hero-content">
                 <h1 class="glitch-text" data-text="ZAKARIA CHTEBAT">ZAKARIA CHTEBAT</h1>
                 <p class="subtitle">Développeur Web & Mobile • Innovation & Créativité</p>
+                <p class="hero-description">
+                    Étudiant passionné à l'École Supérieure de Technologie de Nador, je me spécialise dans le développement d'applications web et mobile modernes. Mon objectif est de créer des solutions technologiques innovantes qui allient performance, esthétique et expérience utilisateur exceptionnelle.
+                </p>
                 <a href="#about" class="cta-button">Découvrir mon univers</a>
                 <a href="#contact" class="cta-button">Me contacter</a>
             </div>
@@ -375,34 +546,92 @@
         <!-- Section À propos -->
         <div class="section" id="about">
             <h2>À Propos de Moi</h2>
-            <div class="skill-card">
-                <h3>🚀 Vision</h3>
-                <p>Étudiant passionné en développement d'applications Web et Mobile à l'École Supérieure de Technologie de Nador. Je suis constamment motivé par l'apprentissage et l'innovation dans le domaine du développement logiciel.</p>
+            <p class="section-description">
+                Découvrez mon parcours, ma vision et mes objectifs dans le monde du développement logiciel
+            </p>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>🚀 Ma Vision</h3>
+                    <p>Je crois fermement que la technologie doit servir l'humanité. Chaque ligne de code que j'écris a pour but d'améliorer l'expérience utilisateur et de résoudre des problèmes concrets. Mon approche combine créativité technique et pragmatisme pour créer des solutions durables et évolutives.</p>
+                    <div class="skill-detail">
+                        <strong>Philosophie :</strong> "Le code n'est pas juste une suite d'instructions, c'est un langage pour transformer les idées en réalité digitale."
+                    </div>
+                </div>
+                <div class="about-card">
+                    <h3>🎯 Mes Objectifs</h3>
+                    <p>Devenir un développeur full-stack reconnu, capable de mener des projets de A à Z. Je souhaite me spécialiser dans les technologies émergentes comme l'IA, la réalité virtuelle et l'IoT pour créer les applications de demain.</p>
+                    <div class="skill-detail">
+                        <strong>Ambition :</strong> Créer des solutions qui impactent positivement la vie de milliers d'utilisateurs
+                    </div>
+                </div>
             </div>
+            
             <div class="skill-card">
-                <h3>🎯 Mission</h3>
-                <p>Créer des expériences digitales exceptionnelles qui allient performance technique et design innovant. Chaque ligne de code que j'écris vise à repousser les limites du possible.</p>
+                <h3>🎓 Parcours Académique</h3>
+                <div class="education-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2022 - 2025</div>
+                        <div class="timeline-title">DUT Génie Informatique</div>
+                        <div class="timeline-description">École Supérieure de Technologie de Nador - Spécialisation en développement d'applications web et mobile avec une approche pratique des technologies modernes.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2021 - 2022</div>
+                        <div class="timeline-title">Baccalauréat Sciences Mathématiques</div>
+                        <div class="timeline-description">Formation solide en mathématiques et sciences, base essentielle pour la logique de programmation et les algorithmes.</div>
+                    </div>
+                </div>
             </div>
         </div>
         
         <!-- Section Compétences -->
         <div class="section" id="skills">
             <h2>Compétences Techniques</h2>
+            <p class="section-description">
+                Un éventail complet de technologies maîtrisées pour créer des solutions complètes et performantes
+            </p>
             <div class="skills-grid">
                 <div class="skill-card">
                     <h3>🖥️ Langages de Programmation</h3>
-                    <p>C • C++ • Java • PHP • JavaScript</p>
+                    <p><strong>C/C++</strong> - Programmation système et algorithmique avancée</p>
+                    <p><strong>Java</strong> - Développement d'applications robustes et évolutives</p>
+                    <p><strong>PHP</strong> - Création de sites web dynamiques et APIs</p>
+                    <p><strong>JavaScript</strong> - Interactivité frontend et développement moderne</p>
+                    <div class="skill-detail">
+                        <strong>Niveau :</strong> Intermédiaire à Avancé • <strong>Expérience :</strong> 3+ années d'apprentissage intensif
+                    </div>
                     <div style="background: linear-gradient(90deg, #00ffff, #ff6b6b); height: 5px; border-radius: 3px; margin-top: 15px;"></div>
                 </div>
                 <div class="skill-card">
                     <h3>🌐 Technologies Web & Mobile</h3>
-                    <p>HTML5 • CSS3 • Android • MySQL</p>
+                    <p><strong>HTML5/CSS3</strong> - Structures sémantiques et designs responsives</p>
+                    <p><strong>Android</strong> - Applications mobiles natives performantes</p>
+                    <p><strong>MySQL</strong> - Gestion de bases de données relationnelles</p>
+                    <div class="skill-detail">
+                        <strong>Spécialités :</strong> Responsive Design, Material Design, Optimisation mobile
+                    </div>
                     <div style="background: linear-gradient(90deg, #4ecdc4, #45b7d1); height: 5px; border-radius: 3px; margin-top: 15px;"></div>
                 </div>
                 <div class="skill-card">
                     <h3>🛠️ Frameworks & Outils</h3>
-                    <p>Laravel • Docker • Git • GitHub • Eclipse • .NET</p>
+                    <p><strong>Laravel</strong> - Framework PHP moderne pour applications web</p>
+                    <p><strong>Docker</strong> - Containerisation et déploiement</p>
+                    <p><strong>Git/GitHub</strong> - Gestion de versions et collaboration</p>
+                    <p><strong>.NET Framework</strong> - Applications desktop et web</p>
+                    <div class="skill-detail">
+                        <strong>Méthodologies :</strong> Agile, TDD, CI/CD, Architecture MVC
+                    </div>
                     <div style="background: linear-gradient(90deg, #96ceb4, #feca57); height: 5px; border-radius: 3px; margin-top: 15px;"></div>
+                </div>
+                <div class="skill-card">
+                    <h3>🔧 Environnements de Développement</h3>
+                    <p><strong>Eclipse</strong> - Développement Java et Android</p>
+                    <p><strong>Android Studio</strong> - Création d'applications mobiles</p>
+                    <p><strong>Visual Studio</strong> - Développement .NET</p>
+                    <p><strong>VS Code</strong> - Éditeur polyvalent pour tous projets</p>
+                    <div class="skill-detail">
+                        <strong>Productivité :</strong> Maîtrise des raccourcis, plugins, et optimisation du workflow
+                    </div>
+                    <div style="background: linear-gradient(90deg, #a8e6cf, #dda0dd); height: 5px; border-radius: 3px; margin-top: 15px;"></div>
                 </div>
             </div>
         </div>
@@ -410,36 +639,103 @@
         <!-- Section Projets -->
         <div class="section" id="projects">
             <h2>Projets Innovants</h2>
+            <p class="section-description">
+                Découvrez mes réalisations concrètes, alliant créativité technique et solutions pratiques
+            </p>
             <div class="projects-grid">
                 <div class="project-card">
                     <h3>📱 Quiz App Mobile</h3>
-                    <p><strong>Technologies:</strong> Java, XML, Android Studio</p>
-                    <p>Application mobile interactive permettant de jouer à des quiz éducatifs sur plusieurs thèmes avec une interface utilisateur moderne et fluide.</p>
+                    <p class="project-tech">Technologies: Java, XML, Android Studio, SQLite</p>
+                    <p class="project-description">Application mobile interactive offrant une expérience de quiz éducatif immersive avec système de scores, catégories multiples et interface utilisateur moderne.</p>
+                    <div class="project-features">
+                        <h4>Fonctionnalités clés :</h4>
+                        <ul>
+                            <li>Système de questions dynamiques avec timer</li>
+                            <li>Catégories multiples (Science, Histoire, Sport, etc.)</li>
+                            <li>Sauvegarde des scores et historique</li>
+                            <li>Interface Material Design responsive</li>
+                            <li>Mode hors-ligne complet</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="project-card">
                     <h3>💪 Fitness App</h3>
-                    <p><strong>Technologies:</strong> Java, Kotlin, Android Studio</p>
-                    <p>Application mobile axée sur la santé et le bien-être, incluant des exercices, suivi des performances et conseils personnalisés avec IA intégrée.</p>
+                    <p class="project-tech">Technologies: Java, Kotlin, Android Studio, Firebase</p>
+                    <p class="project-description">Application mobile complète dédiée au fitness avec suivi personnalisé, programmes d'entraînement adaptatifs et conseils nutritionnels intégrés.</p>
+                    <div class="project-features">
+                        <h4>Fonctionnalités avancées :</h4>
+                        <ul>
+                            <li>Suivi des performances en temps réel</li>
+                            <li>Programmes d'entraînement personnalisés</li>
+                            <li>Intégration capteurs fitness (podomètre, cardio)</li>
+                            <li>Analyses statistiques et graphiques</li>
+                            <li>Communauté et partage de progression</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="project-card">
-                    <h3>🍕 Plateforme Pizza</h3>
-                    <p><strong>Technologies:</strong> PHP, Laravel, MySQL, Docker</p>
-                    <p>Plateforme e-commerce complète pour commandes de pizzas avec gestion des utilisateurs, paiements sécurisés et tableau de bord administrateur.</p>
+                    <h3>🍕 Plateforme Pizza E-commerce</h3>
+                    <p class="project-tech">Technologies: PHP, Laravel, MySQL, Docker, Stripe API</p>
+                    <p class="project-description">Plateforme e-commerce complète pour pizzeria avec gestion avancée des commandes, paiements sécurisés et tableau de bord administrateur sophistiqué.</p>
+                    <div class="project-features">
+                        <h4>Architecture complète :</h4>
+                        <ul>
+                            <li>Catalogue produits avec personnalisation</li>
+                            <li>Panier intelligent et commande rapide</li>
+                            <li>Système de paiement sécurisé (Stripe)</li>
+                            <li>Gestion des stocks en temps réel</li>
+                            <li>Dashboard analytics pour restaurateur</li>
+                            <li>Notifications push et email</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="project-card">
-                    <h3>📊 Gestion de Stock</h3>
-                    <p><strong>Technologies:</strong> Java, JSF, JDBC, JPA</p>
-                    <p>Application enterprise robuste pour la gestion complète des stocks avec architecture MVC et interface utilisateur intuitive.</p>
+                    <h3>📊 Système Gestion de Stock</h3>
+                    <p class="project-tech">Technologies: Java, JSF, JDBC, JPA, PostgreSQL</p>
+                    <p class="project-description">Application enterprise robuste pour la gestion complète des stocks avec architecture MVC, reporting avancé et interface utilisateur intuitive.</p>
+                    <div class="project-features">
+                        <h4>Fonctionnalités enterprise :</h4>
+                        <ul>
+                            <li>Gestion multi-entrepôts</li>
+                            <li>Système d'alertes automatiques</li>
+                            <li>Rapports et analytics avancés</li>
+                            <li>Gestion des fournisseurs et clients</li>
+                            <li>Historique complet des mouvements</li>
+                            <li>Interface responsive et moderne</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="project-card">
-                    <h3>🎓 Gestion Étudiants</h3>
-                    <p><strong>Technologies:</strong> .NET Framework, VB.NET</p>
-                    <p>Système complet de gestion académique avec fonctionnalités avancées de recherche, reporting et analytics.</p>
+                    <h3>🎓 Système Gestion Étudiants</h3>
+                    <p class="project-tech">Technologies: .NET Framework, VB.NET, SQL Server</p>
+                    <p class="project-description">Système académique complet avec gestion des inscriptions, notes, emplois du temps et génération automatique de bulletins et certificats.</p>
+                    <div class="project-features">
+                        <h4>Modules académiques :</h4>
+                        <ul>
+                            <li>Gestion complète des étudiants</li>
+                            <li>Système de notes et moyennes</li>
+                            <li>Génération automatique de bulletins</li>
+                            <li>Planning et emplois du temps</li>
+                            <li>Gestion des absences</li>
+                            <li>Statistiques et rapports détaillés</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="project-card">
-                    <h3>📝 Gestion des Notes</h3>
-                    <p><strong>Technologies:</strong> ASP.NET, C#</p>
-                    <p>Application web sécurisée pour la gestion des évaluations avec contrôle d'accès multi-niveaux et génération de rapports automatisés.</p>
+                    <h3>📝 Plateforme Gestion des Notes</h3>
+                    <p class="project-tech">Technologies: ASP.NET, C#, Entity Framework</p>
+                    <p class="project-description">Application web sécurisée pour établissements scolaires avec contrôle d'accès multi-niveaux, gestion des évaluations et reporting automatisé.</p>
+                    <div class="project-features">
+                        <h4>Sécurité et performance :</h4>
+                        <ul>
+                            <li>Authentification multi-niveaux</li>
+                            <li>Saisie et validation des notes</li>
+                            <li>Calculs automatiques de moyennes</li>
+                            <li>Exports Excel et PDF</li>
+                            <li>Interface responsive et accessible</li>
+                            <li>Backup automatique des données</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -447,18 +743,63 @@
         <!-- Section Contact -->
         <div class="section" id="contact">
             <h2>Prenons Contact</h2>
+            <p class="section-description">
+                Prêt à collaborer ? Contactez-moi pour discuter de votre prochain projet ou pour une opportunité professionnelle
+            </p>
             <div class="skills-grid">
                 <div class="skill-card">
-                    <h3>📧 Email</h3>
-                    <p>zakariachtebat@gmail.com</p>
+                    <h3>📧 Email Professionnel</h3>
+                    <p><strong>zakariachtebat@gmail.com</strong></p>
+                    <div class="skill-detail">
+                        Disponible 7j/7 pour discussions projets, collaborations et opportunités professionnelles. Réponse garantie sous 24h.
+                    </div>
                 </div>
                 <div class="skill-card">
                     <h3>🌐 LinkedIn</h3>
-                    <p>Zakaria Chtebat</p>
+                    <p><strong>Zakaria Chtebat</strong></p>
+                    <div class="skill-detail">
+                        Retrouvez mon parcours professionnel détaillé, mes recommandations et connectons-nous pour échanger sur les dernières tendances tech.
+                    </div>
                 </div>
                 <div class="skill-card">
-                    <h3>🌍 Langues</h3>
-                    <p>🇲🇦 Arabe • 🇫🇷 Français • 🇬🇧 Anglais</p>
+                    <h3>🌍 Compétences Linguistiques</h3>
+                    <p>🇲🇦 <strong>Arabe</strong> - Langue maternelle, parfaite maîtrise</p>
+                    <p>🇫🇷 <strong>Français</strong> - Courant, excellent niveau professionnel</p>
+                    <p>🇬🇧 <strong>Anglais</strong> - Bon niveau, documentation technique</p>
+                    <div class="skill-detail">
+                        Communication fluide dans un environnement international, capable de travailler avec des équipes multiculturelles.
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>💼 Disponibilité</h3>
+                    <p><strong>Projets freelance :</strong> Acceptés avec plaisir</p>
+                    <p><strong>Stages :</strong> Ouvert aux opportunités</p>
+                    <p><strong>Collaboration :</strong> Projets étudiants et professionnels</p>
+                    <div class="skill-detail">
+                        Flexible et adaptable, je peux m'ajuster à différents fuseaux horaires et méthodologies de travail (Agile, Scrum, etc.).
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-card" style="text-align: center; margin-top: 50px;">
+                <h3>🚀 Pourquoi Collaborer Avec Moi ?</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 30px;">
+                    <div>
+                        <h4 style="color: #00ffff; margin-bottom: 10px;">⚡ Rapidité</h4>
+                        <p>Développement agile et livraisons respectant les délais convenus</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #4ecdc4; margin-bottom: 10px;">🎨 Créativité</h4>
+                        <p>Solutions innovantes alliant technique et design moderne</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #ff6b6b; margin-bottom: 10px;">🔧 Polyvalence</h4>
+                        <p>Compétences full-stack pour projets complets de A à Z</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #96ceb4; margin-bottom: 10px;">📚 Apprentissage</h4>
+                        <p>Veille technologique constante et adaptation rapide</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -500,14 +841,17 @@
             const sizes = new Float32Array(particleCount);
             
             for (let i = 0; i < particleCount; i++) {
+                // Position aléatoire dans un cube
                 positions[i * 3] = (Math.random() - 0.5) * 50;
                 positions[i * 3 + 1] = (Math.random() - 0.5) * 50;
                 positions[i * 3 + 2] = (Math.random() - 0.5) * 50;
                 
+                // Couleurs dégradées (cyan à magenta)
                 colors[i * 3] = Math.random();
                 colors[i * 3 + 1] = Math.random() * 0.5 + 0.5;
                 colors[i * 3 + 2] = 1;
                 
+                // Tailles variables
                 sizes[i] = Math.random() * 3 + 1;
             }
             
@@ -516,6 +860,7 @@
             geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
             geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
             
+            // Shader personnalisé pour les particules
             const material = new THREE.ShaderMaterial({
                 uniforms: {
                     time: { value: 0 }
@@ -529,6 +874,8 @@
                     void main() {
                         vColor = color;
                         vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+                        
+                        // Animation de pulsation basée sur le temps
                         gl_PointSize = size * (300.0 / -mvPosition.z) * (1.0 + sin(time + position.x * 0.01) * 0.5);
                         gl_Position = projectionMatrix * mvPosition;
                     }
@@ -540,6 +887,7 @@
                         float distanceToCenter = distance(gl_PointCoord, vec2(0.5));
                         if (distanceToCenter > 0.5) discard;
                         
+                        // Effet de dégradé radial
                         float alpha = 1.0 - distanceToCenter * 2.0;
                         gl_FragColor = vec4(vColor, alpha * 0.8);
                     }
@@ -553,14 +901,17 @@
         }
         
         function createFloatingGeometries() {
+            // Différentes formes géométriques
             const shapes = [
                 new THREE.BoxGeometry(0.5, 0.5, 0.5),
                 new THREE.SphereGeometry(0.3, 12, 8),
                 new THREE.ConeGeometry(0.3, 0.8, 8),
-                new THREE.TorusGeometry(0.3, 0.1, 8, 16)
+                new THREE.TorusGeometry(0.3, 0.1, 8, 16),
+                new THREE.OctahedronGeometry(0.4),
+                new THREE.TetrahedronGeometry(0.4)
             ];
             
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 25; i++) {
                 const geometry = shapes[Math.floor(Math.random() * shapes.length)];
                 const material = new THREE.MeshBasicMaterial({
                     color: new THREE.Color().setHSL(Math.random(), 0.7, 0.5),
@@ -570,17 +921,31 @@
                 });
                 
                 const mesh = new THREE.Mesh(geometry, material);
+                
+                // Position aléatoire
                 mesh.position.set(
-                    (Math.random() - 0.5) * 20,
-                    (Math.random() - 0.5) * 20,
-                    (Math.random() - 0.5) * 20
+                    (Math.random() - 0.5) * 25,
+                    (Math.random() - 0.5) * 25,
+                    (Math.random() - 0.5) * 25
                 );
                 
+                // Rotation initiale aléatoire
                 mesh.rotation.set(
                     Math.random() * Math.PI,
                     Math.random() * Math.PI,
                     Math.random() * Math.PI
                 );
+                
+                // Propriétés personnalisées pour l'animation
+                mesh.userData = {
+                    rotationSpeed: {
+                        x: (Math.random() - 0.5) * 0.02,
+                        y: (Math.random() - 0.5) * 0.02,
+                        z: (Math.random() - 0.5) * 0.02
+                    },
+                    floatSpeed: Math.random() * 0.02 + 0.01,
+                    floatOffset: Math.random() * Math.PI * 2
+                };
                 
                 geometries.push(mesh);
                 scene.add(mesh);
@@ -592,21 +957,33 @@
             
             const time = Date.now() * 0.001;
             
-            // Animation des particules
+            // Animation des particules avec pulsation
             if (particles) {
                 particles.material.uniforms.time.value = time;
                 particles.rotation.x = time * 0.1;
                 particles.rotation.y = time * 0.05;
+                
+                // Mouvement orbital lent
+                particles.position.x = Math.sin(time * 0.1) * 2;
+                particles.position.y = Math.cos(time * 0.1) * 1;
             }
             
-            // Animation des géométries
+            // Animation des géométries flottantes
             geometries.forEach((mesh, index) => {
-                mesh.rotation.x += 0.01 + index * 0.001;
-                mesh.rotation.y += 0.01 + index * 0.001;
-                mesh.position.y += Math.sin(time + index) * 0.01;
+                // Rotation continue
+                mesh.rotation.x += mesh.userData.rotationSpeed.x;
+                mesh.rotation.y += mesh.userData.rotationSpeed.y;
+                mesh.rotation.z += mesh.userData.rotationSpeed.z;
+                
+                // Movement flottant vertical
+                mesh.position.y += Math.sin(time * mesh.userData.floatSpeed + mesh.userData.floatOffset) * 0.01;
+                
+                // Changement de couleur subtle
+                const hue = (time * 0.1 + index * 0.1) % 1;
+                mesh.material.color.setHSL(hue, 0.7, 0.5);
             });
             
-            // Interaction avec la souris
+            // Interaction avec la souris - mouvement de caméra smooth
             camera.position.x += (mouseX - camera.position.x) * 0.05;
             camera.position.y += (-mouseY - camera.position.y) * 0.05;
             camera.lookAt(scene.position);
@@ -616,38 +993,45 @@
         
         // Event listeners
         document.addEventListener('mousemove', (event) => {
+            // Calcul de la position relative de la souris
             mouseX = (event.clientX - window.innerWidth / 2) * 0.01;
             mouseY = (event.clientY - window.innerHeight / 2) * 0.01;
             
-            // Curseur personnalisé
+            // Curseur personnalisé suit la souris
             const cursor = document.querySelector('.cursor');
             cursor.style.left = event.clientX + 'px';
             cursor.style.top = event.clientY + 'px';
         });
         
+        // Redimensionnement de la fenêtre
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
         
-        // Particules 2D flottantes
+        // Particules 2D flottantes pour l'arrière-plan
         function createFloatingParticles() {
             const container = document.getElementById('particles');
             
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 60; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Math.random() * 100 + '%';
-                particle.style.width = Math.random() * 6 + 2 + 'px';
+                particle.style.width = Math.random() * 8 + 2 + 'px';
                 particle.style.height = particle.style.width;
                 particle.style.animationDelay = Math.random() * 6 + 's';
                 particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                
+                // Couleurs variées pour les particules
+                const colors = ['#00ffff', '#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4'];
+                particle.style.background = `radial-gradient(circle, ${colors[Math.floor(Math.random() * colors.length)]}, transparent)`;
+                
                 container.appendChild(particle);
             }
         }
         
-        // Navigation smooth
+        // Navigation smooth avec mise à jour active
         document.querySelectorAll('.nav-dot').forEach(dot => {
             dot.addEventListener('click', () => {
                 const section = dot.getAttribute('data-section');
@@ -655,6 +1039,7 @@
                     behavior: 'smooth' 
                 });
                 
+                // Mise à jour de l'état actif
                 document.querySelectorAll('.nav-dot').forEach(d => d.classList.remove('active'));
                 dot.classList.add('active');
             });
@@ -671,13 +1056,40 @@
             });
         });
         
+        // Détection du scroll pour navigation active
+        function updateActiveNavigation() {
+            const sections = ['hero', 'about', 'skills', 'projects', 'contact'];
+            let currentSection = 'hero';
+            
+            sections.forEach(sectionId => {
+                const element = document.getElementById(sectionId);
+                const rect = element.getBoundingClientRect();
+                
+                if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                    currentSection = sectionId;
+                }
+            });
+            
+            // Mise à jour de la navigation
+            document.querySelectorAll('.nav-dot').forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.getAttribute('data-section') === currentSection) {
+                    dot.classList.add('active');
+                }
+            });
+        }
+        
+        // Écoute du scroll
+        window.addEventListener('scroll', updateActiveNavigation);
+        
         // Initialisation
         window.addEventListener('load', () => {
             init();
             createFloatingParticles();
+            updateActiveNavigation();
         });
         
-        // Scroll animation pour les cartes
+        // Animation d'apparition au scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -694,12 +1106,22 @@
         
         // Observer tous les éléments animables
         document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.skill-card, .project-card').forEach(el => {
+            document.querySelectorAll('.skill-card, .project-card, .about-card').forEach(el => {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(50px)';
                 el.style.transition = 'all 0.6s ease';
                 observer.observe(el);
             });
+        });
+        
+        // Effet de parallaxe subtle sur les sections
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            
+            if (particles) {
+                particles.position.y = rate * 0.001;
+            }
         });
     </script>
 </body>
