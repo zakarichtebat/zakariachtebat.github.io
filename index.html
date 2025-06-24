@@ -715,6 +715,33 @@
                 filter: brightness(1.1);
                 box-shadow: none;
             }
+            #canvas-container, .floating-particles {
+                display: none !important;
+            }
+            .hero-section {
+                background: linear-gradient(135deg, #181818 0%, #23234a 100%) !important;
+                position: relative;
+            }
+            .hero-section::before {
+                content: '';
+                position: absolute;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(0,0,0,0.7);
+                z-index: 0;
+            }
+            .hero-content {
+                position: relative;
+                z-index: 1;
+            }
+            .profile-photo-container {
+                margin-bottom: 18px;
+            }
+            .floating-nav {
+                display: none !important;
+            }
+            .hero-section {
+                padding-bottom: 40px;
+            }
         }
     </style>
 </head>
