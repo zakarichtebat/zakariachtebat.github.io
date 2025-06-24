@@ -13,7 +13,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
+            background: linear-gradient(135deg, #181818 0%, #23234a 100%);
             font-family: 'Arial', sans-serif;
             overflow-x: hidden;
             cursor: none;
@@ -640,51 +640,80 @@
         /* Responsive */
         @media (max-width: 768px) {
             .glitch-text {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
-            
             .section h2 {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
-            
             .skills-grid,
             .projects-grid,
             .about-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
-
             .floating-nav {
-                right: 15px;
+                right: 8px;
             }
-
+            .hero-section {
+                padding: 0 5px;
+                min-height: 90vh;
+            }
             .hero-content {
                 flex-direction: column;
-                gap: 40px;
+                gap: 20px;
                 text-align: center;
+                align-items: center;
+                justify-content: center;
             }
-
             .hero-text {
                 text-align: center;
+                padding: 0 5px;
             }
-
             .profile-photo {
-                width: 200px;
-                height: 200px;
+                width: 120px;
+                height: 120px;
+                box-shadow: 0 8px 20px rgba(0,0,0,0.25);
             }
-
             .profile-photo-glow {
-                width: 220px;
-                height: 220px;
+                width: 140px;
+                height: 140px;
+                opacity: 0.3;
             }
-
             .profile-photo-particles {
-                width: 250px;
-                height: 250px;
+                width: 150px;
+                height: 150px;
+                opacity: 0.2;
             }
-
             .profile-particle {
-                width: 3px;
-                height: 3px;
+                width: 2px;
+                height: 2px;
+                opacity: 0.5;
+            }
+            body {
+                background: linear-gradient(135deg, #181818 0%, #23234a 100%);
+            }
+            .section, .about-card, .skill-card, .project-card {
+                background: rgba(30,30,40,0.95) !important;
+                color: #fff !important;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            }
+            .project-card, .about-card, .skill-card {
+                padding: 18px !important;
+            }
+            .section-description {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+            .cta-button {
+                padding: 10px 18px;
+                font-size: 0.95rem;
+                margin: 15px 5px;
+                background: linear-gradient(45deg, #4ecdc4, #45b7d1);
+                border: none;
+            }
+            .cta-button:hover {
+                filter: brightness(1.1);
+                box-shadow: none;
             }
         }
     </style>
@@ -1093,6 +1122,7 @@
                     time: { value: 0 }
                 },
                 vertexShader: `
+                    precision mediump float;
                     attribute float size;
                     attribute vec3 color;
                     varying vec3 vColor;
@@ -1101,9 +1131,8 @@
                     void main() {
                         vColor = color;
                         vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-                        
-                        // Animation de pulsation basée sur le temps
-                        gl_PointSize = size * (300.0 / -mvPosition.z) * (1.0 + sin(time + position.x * 0.01) * 0.5);
+                        float pointSize = size * (300.0 / max(-mvPosition.z, 0.1)) * (1.0 + sin(time + position.x * 0.01) * 0.5);
+                        gl_PointSize = max(pointSize, 1.0);
                         gl_Position = projectionMatrix * mvPosition;
                     }
                 `,
