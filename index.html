@@ -68,12 +68,113 @@
             justify-content: center;
             text-align: center;
             padding: 0 20px;
+            position: relative;
         }
 
         .hero-content {
             max-width: 900px;
             animation: fadeInUp 2s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
         }
+
+        .hero-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .profile-photo-container {
+            flex-shrink: 0;
+            position: relative;
+            animation: fadeInRight 2s ease-out 0.5s both;
+        }
+
+        .profile-photo-container::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #00ffff, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 400% 400%;
+            animation: gradientRotate 3s ease infinite;
+            z-index: 1;
+        }
+
+        .profile-photo-container::after {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            right: -12px;
+            bottom: -12px;
+            border-radius: 50%;
+            background: #0f0f0f;
+            z-index: 2;
+        }
+
+        .profile-photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255,255,255,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            animation: float 6s ease-in-out infinite;
+            position: relative;
+            z-index: 4;
+            background: url('PHOTO PROFILE.png') center center/cover no-repeat;
+        }
+
+        .profile-photo::after {
+            content: '';
+        }
+
+        .profile-photo-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,255,255,0.3), transparent);
+            animation: glow 4s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .profile-photo-particles {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .profile-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #00ffff;
+            border-radius: 50%;
+            animation: orbit 8s linear infinite;
+        }
+
+        .profile-particle:nth-child(1) { animation-delay: 0s; }
+        .profile-particle:nth-child(2) { animation-delay: 1s; }
+        .profile-particle:nth-child(3) { animation-delay: 2s; }
+        .profile-particle:nth-child(4) { animation-delay: 3s; }
+        .profile-particle:nth-child(5) { animation-delay: 4s; }
+        .profile-particle:nth-child(6) { animation-delay: 5s; }
+        .profile-particle:nth-child(7) { animation-delay: 6s; }
+        .profile-particle:nth-child(8) { animation-delay: 7s; }
 
         .glitch-text {
             font-size: 4rem;
@@ -139,6 +240,7 @@
             animation: gradientShift 4s ease infinite;
             pointer-events: all;
             border: 2px solid rgba(255,255,255,0.3);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
         }
 
@@ -184,6 +286,7 @@
 
         .skill-card {
             background: rgba(255,255,255,0.1);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.2);
             border-radius: 20px;
@@ -225,6 +328,7 @@
 
         .project-card {
             background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            -webkit-backdrop-filter: blur(15px);
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255,255,255,0.2);
             border-radius: 25px;
@@ -305,6 +409,7 @@
 
         .about-card {
             background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            -webkit-backdrop-filter: blur(15px);
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255,255,255,0.2);
             border-radius: 25px;
@@ -437,6 +542,51 @@
             50% { transform: translateY(-100px) rotate(180deg); }
         }
 
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes gradientRotate {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes glow {
+            0%, 100% { 
+                opacity: 0.3;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+                opacity: 0.6;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+
+        @keyframes orbit {
+            0% {
+                transform: rotate(0deg) translateX(175px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(360deg) translateX(175px) rotate(-360deg);
+                opacity: 0;
+            }
+        }
+
         /* Navigation flottante */
         .floating-nav {
             position: fixed;
@@ -506,6 +656,36 @@
             .floating-nav {
                 right: 15px;
             }
+
+            .hero-content {
+                flex-direction: column;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .profile-photo {
+                width: 200px;
+                height: 200px;
+            }
+
+            .profile-photo-glow {
+                width: 220px;
+                height: 220px;
+            }
+
+            .profile-photo-particles {
+                width: 250px;
+                height: 250px;
+            }
+
+            .profile-particle {
+                width: 3px;
+                height: 3px;
+            }
         }
     </style>
 </head>
@@ -533,13 +713,29 @@
         <!-- Section Hero -->
         <div class="hero-section" id="hero">
             <div class="hero-content">
-                <h1 class="glitch-text" data-text="ZAKARIA CHTEBAT">ZAKARIA CHTEBAT</h1>
-                <p class="subtitle">Développeur Web & Mobile • Innovation & Créativité</p>
-                <p class="hero-description">
-                    Étudiant passionné à l'École Supérieure de Technologie de Nador, je me spécialise dans le développement d'applications web et mobile modernes. Mon objectif est de créer des solutions technologiques innovantes qui allient performance, esthétique et expérience utilisateur exceptionnelle.
-                </p>
-                <a href="#about" class="cta-button">Découvrir mon univers</a>
-                <a href="#contact" class="cta-button">Me contacter</a>
+                <div class="hero-text">
+                    <h1 class="glitch-text" data-text="ZAKARIA CHTEBAT">ZAKARIA CHTEBAT</h1>
+                    <p class="subtitle">Développeur Web & Mobile • Innovation & Créativité</p>
+                    <p class="hero-description">
+                        Étudiant passionné à l'École Supérieure de Technologie de Nador, je me spécialise dans le développement d'applications web et mobile modernes. Mon objectif est de créer des solutions technologiques innovantes qui allient performance, esthétique et expérience utilisateur exceptionnelle.
+                    </p>
+                    <a href="#about" class="cta-button">Découvrir mon univers</a>
+                    <a href="#contact" class="cta-button">Me contacter</a>
+                </div>
+                <div class="profile-photo-container">
+                    <div class="profile-photo"></div>
+                    <div class="profile-photo-glow"></div>
+                    <div class="profile-photo-particles">
+                        <div class="profile-particle"></div>
+                        <div class="profile-particle"></div>
+                        <div class="profile-particle"></div>
+                        <div class="profile-particle"></div>
+                        <div class="profile-particle"></div>
+                        <div class="profile-particle"></div>
+                        <div class="profile-particle"></div>
+                        <div class="profile-particle"></div>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -755,12 +951,12 @@
                   <div class="project-card">
                     <h3>📅 Application de Rendez-vous Administratifs - CCIS Nador</h3>
                     <p class="project-tech">Technologies: NestJS, Vue.js, Prisma, MySQL</p>
-                    <p class="project-description">Application web développée dans le cadre de mon stage à la Chambre de Commerce, d’Industrie et de Services de Nador (CCIS), destinée à digitaliser le système de prise de rendez-vous entre les citoyens et les services administratifs.</p>
+                    <p class="project-description">Application web développée dans le cadre de mon stage à la Chambre de Commerce, d'Industrie et de Services de Nador (CCIS), destinée à digitaliser le système de prise de rendez-vous entre les citoyens et les services administratifs.</p>
                     <div class="project-features">
                       <h4>Points clés du projet :</h4>
                       <ul>
                         <li>Architecture full-stack modulaire</li>
-                        <li>UML complet : cas d’utilisation, séquences, classes</li>
+                        <li>UML complet : cas d'utilisation, séquences, classes</li>
                         <li>API REST documentée avec Swagger</li>
                         <li>Back-end : NestJS + Prisma + MySQL</li>
                         <li>Front-end : Vue.js moderne et réactif</li>
